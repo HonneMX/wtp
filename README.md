@@ -16,6 +16,7 @@ The API is written with FastAPI and you can use the /docs prefix (http://localho
 to open a list of methods
 
 RU
+
 Проект создан с целью предоставить песочницу для начинающих тестировщиков, что бы познакомится с принципов работы WEB сайта API и Базы Данных. Все эти три слоя разворачиваются двумя командами 
 
 из корня репозитория 
