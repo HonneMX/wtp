@@ -1,0 +1,2 @@
+docker build -t wtp-db .
+docker run -p 5432:5432 --name wtp-db -d wtp && docker start wtp-db

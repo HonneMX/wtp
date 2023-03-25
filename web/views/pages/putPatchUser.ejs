@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <form>
+    <label for="role">User Id:</label>
+    <input type="text" name="role" id="user_id">
+    <br>
+    <label for="name">Имя:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email">
+    <br>
+    <label for="password">Пароль:</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <label for="role">Роль:</label>
+    <input type="text" name="role" id="role_id">
+    <br>
+    <button type="submit" id="submitButton">Сохранить</button>
+  </form>
+
+  <script>
+    var url = 'http://localhost:8080/users'
+    const form = document.querySelector('form');
+    form.addEventListener('submit', submitForm);
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const user_id = document.getElementById('user_id').value;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const role_id = document.getElementById('role_id').value;
+      
+      const data = {
+        name,
+        email,
+        password,
+        role_id
+      };
+      fetch(`${url}/${encodeURIComponent(user_id)}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          const outputDiv = document.getElementById('output');
+          outputDiv.innerHTML = JSON.stringify(data);
+        })
+        .catch(error => console.error(error));
+    }
+  </script>
+
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

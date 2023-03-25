@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+
+  <form id="login-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Submit</button>
+  </form>
+
+    <div id="output"></div>
+
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const url = 'http://localhost:8080/login';
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      fetch(`${url}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`, {
+        method: 'GET',
+      })
+        .then(response => response.json())
+        .then(function (data) {
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = JSON.stringify(data);
+          })
+        .then(data => console.log(data.token))
+        .catch(error => console.error(error));
+    });
+  </script>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

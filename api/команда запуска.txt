@@ -1,0 +1,5 @@
+# Собираем образ
+docker build -t wtp-api .
+
+# Запускаем контейнер
+docker run -p 8080:8080 --name wtp-api -d wtp-api

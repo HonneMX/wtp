@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  wtp-api:
+    build: ./api
+    image: wtp-api
+    container_name: wtp-api
+    #network_mode: "host"
+    ports:
+      - "8080:8080"
+    #restart: always
+    networks:
+      - wtp_network
+    depends_on:
+      - wtp-db
+  wtp-db:
+    build: ./db
+    image: wtp-db
+    container_name: wtp-db
+    ports:
+      - "5432:5432"
+    networks:
+      - wtp_network
+  wtp-web:
+    build: ./web
+    volumes:
+      - ./node_process:/var/node_process
+      - /node_modules
+    command: node ./app.js
+    image: wtp-web
+    container_name: wtp-web
+    ports:
+      - "3000:3000"
+    networks:
+      - wtp_network
+networks:
+  wtp_network:

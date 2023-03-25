@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+
+    <script>
+      var url = 'http://localhost:8080/users'
+      var output = document.getElementById("myData")
+
+      function getUserList() {
+        fetch(url)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = JSON.stringify(data);
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      }
+    </script>
+
+
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <h2>Список пользователей:</h2>
+
+  <body>
+    <div id="output">
+      </div>
+      <button type="submit" onclick="getUserList()">Получить список пользователей</button>
+  </body>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+  <form>
+    <label for="user_id">User Id:</label>
+    <input type="text" name="role" id="user_id">
+    <br>
+    <button type="submit">Submit</button>
+    <div id="output"></div>
+  </form>
+
+  <script>
+    const user_id = document.getElementById('user_id');
+    const url = `http://localhost:8080/users/${userId}`;
+    var output = document.getElementById("myData")
+    
+    form.addEventListener('submit', deleteUser);
+    function deleteUser() {
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          var outputDiv = document.getElementById('output');
+          outputDiv.innerHTML = JSON.stringify(data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+  </script>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
