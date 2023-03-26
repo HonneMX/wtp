@@ -122,7 +122,9 @@ async def read_users():
     # Преобразование списка записей в список словарей
     users = []
     for row in rows:
-        user = {"id": row[0], "name": row[1], "email": row[2], "password": row[3], "role_id": row[4]}
+        user = {"id": row[0], "name": row[1], "email": row[2], "password": row[3], "role_id": [4]}
+        #Заложенная бомба для тестеров, возвращается список [4] вместо ответав методе
+        #user = {"id": row[0], "name": row[1], "email": row[2], "password": row[3], "role_id": row[4]}
         users.append(user)
     return users
 
@@ -160,6 +162,7 @@ def partial_update_user(user_id: int, user: User):
         conn.close()
     return {"message": "User updated successfully"}
 
+#Метод не срабатывает коректно
 @app.delete("/users/{user_id}")
 def delete_user(user_id: int):
     conn = get_conn()
