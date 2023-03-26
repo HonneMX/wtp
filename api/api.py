@@ -122,7 +122,7 @@ async def read_users():
     # Преобразование списка записей в список словарей
     users = []
     for row in rows:
-        user = {"id": row[0], "name": row[1], "email": row[2], "password": [3], "role_id": [4]}
+        user = {"id": row[0], "name": row[1], "email": row[2], "password": row[3], "role_id": row[4]}
         users.append(user)
     return users
 
