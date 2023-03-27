@@ -5,6 +5,9 @@ from psycopg2 import sql
 from fastapi.middleware.cors import CORSMiddleware
 import jwt
 import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Создание экземпляра приложения FastAPI
 app = FastAPI()
@@ -89,12 +92,16 @@ def authenticate_user(email, password):
 
 @app.get("/login")
 async def login(email: str, password: str):
+    logger.info("User login request received with email %s", email)
     # проверяем аутентификацию в таблице users
     authenticated = authenticate_user(email, password)
     if not authenticated:
+        logger.warning("Authentication failed for user with email %s", email)
         raise HTTPException(status_code=401, detail="Incorrect email or password")
+    logger.info("User %s successfully authenticated", email)
     # генерируем токен и возвращаем его
     token = generate_token(email,password)
+    logger.info("Access token generated for user %s", email)
     return {"access_token": token}
 
 # Обработчик HTTP-запроса метода POST для создания нового пользователя
