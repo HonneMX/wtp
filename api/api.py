@@ -8,6 +8,18 @@ import datetime
 import logging
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# Создаем файловый обработчик логов
+file_handler = logging.FileHandler('log')
+file_handler.setLevel(logging.INFO)
+
+# Создаем форматтер
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# Добавляем обработчик к логгеру
+logger.addHandler(file_handler)
 
 # Создание экземпляра приложения FastAPI
 app = FastAPI()
@@ -96,7 +108,7 @@ async def login(email: str, password: str):
     # проверяем аутентификацию в таблице users
     authenticated = authenticate_user(email, password)
     if not authenticated:
-        logger.warning("Authentication failed for user with email %s", email)
+        logger.error("Authentication failed for user with email %s", email)
         raise HTTPException(status_code=401, detail="Incorrect email or password")
     logger.info("User %s successfully authenticated", email)
     # генерируем токен и возвращаем его
