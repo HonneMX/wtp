@@ -1,37 +1,39 @@
-version: '3.8'
+version: '3.8' # версия Docker Compose
 
-services:
-  wtp-api:
-    build: ./api
-    image: wtp-api
-    container_name: wtp-api
-    #network_mode: "host"
+services: # сервисы, которые будут запущены
+
+  wtp-api: # сервис API
+    build: ./api # путь к директории, где находится Dockerfile для сервиса
+    image: wtp-api # имя образа Docker для сервиса
+    container_name: wtp-api # имя контейнера сервиса
     ports:
-      - "8080:8080"
-    #restart: always
+      - "8080:8080" # проброс порта 8080 на хост машину
     networks:
-      - wtp_network
+      - wtp_network # указание используемой сети
     depends_on:
-      - wtp-db
-  wtp-db:
-    build: ./db
-    image: wtp-db
-    container_name: wtp-db
+      - wtp-db # зависимость сервиса от базы данных
+  
+  wtp-db: # сервис базы данных
+    build: ./db # путь к директории, где находится Dockerfile для сервиса
+    image: wtp-db # имя образа Docker для сервиса
+    container_name: wtp-db # имя контейнера сервиса
     ports:
-      - "5432:5432"
+      - "5432:5432" # проброс порта 5432 на хост машину
     networks:
-      - wtp_network
-  wtp-web:
-    build: ./web
+      - wtp_network # указание используемой сети
+  
+  wtp-web: # сервис веб-приложения
+    build: ./web # путь к директории, где находится Dockerfile для сервиса
     volumes:
-      - ./node_process:/var/node_process
-      - /node_modules
-    command: node ./app.js
-    image: wtp-web
-    container_name: wtp-web
+      - ./node_process:/var/node_process # монтирование локальной директории в контейнер
+      - /node_modules # монтирование локальной директории в контейнер
+    command: node ./app.js # команда, которая будет выполнена при запуске контейнера
+    image: wtp-web # имя образа Docker для сервиса
+    container_name: wtp-web # имя контейнера сервиса
     ports:
-      - "3000:3000"
+      - "3000:3000" # проброс порта 3000 на хост машину
     networks:
-      - wtp_network
-networks:
-  wtp_network:
+      - wtp_network # указание используемой сети
+
+networks: # настройки сетей
+  wtp_network: # наименование сети, которую используют сервисы

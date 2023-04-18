@@ -3,7 +3,32 @@
 
 <head>
   <%- include('../partials/head'); %>
-
+  <style>
+    form table {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    form label {
+      margin-bottom: 5px;
+    }
+    form input {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
     <script>
       var url = 'http://localhost:8080/users'
       var output = document.getElementById("myData")
@@ -31,13 +56,22 @@
   <header>
     <%- include('../partials/header'); %>
   </header>
+  <main>
+    <div class="jumbotron">
+      <h1>Получение списка пользователей:</h1>
+      <p>При нажатии "Получить список пользователей" будет возвращен список всех пользователей из Базы Данных таблицы USERS</p>
+    </div>
+  </main>
 
-  <h2>Список пользователей:</h2>
 
   <body>
     <div id="output">
       </div>
+      <tr>
+        <td>
       <button type="submit" onclick="getUserList()">Получить список пользователей</button>
+    </td>
+  </tr>
   </body>
 
   <footer>

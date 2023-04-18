@@ -3,6 +3,32 @@
 
 <head>
   <%- include('../partials/head'); %>
+  <style>
+    form table {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    form label {
+      margin-bottom: 5px;
+    }
+    form input {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -10,11 +36,24 @@
   <header>
     <%- include('../partials/header'); %>
   </header>
+  <main>
+    <div class="jumbotron">
+      <h1>Страница удаления пользователя:</h1>
+      <p>Необходимо указать ID пользователя которого удаляем. ID пользователя можно посмотреть в таблице USERS в Базе Данных. после удаления должнопоявится уведомление об удалении пользователя </p>
+    </div>
+  </main>
   <form>
+    <tr>
+      <td>
     <label for="user_id">User Id:</label>
     <input type="text" name="role" id="user_id">
-    <br>
-    <button type="submit">Submit</button>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button type="submit">Delete User</button>
+  </td>
+</tr>
     <div id="output"></div>
   </form>
 

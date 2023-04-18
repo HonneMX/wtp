@@ -3,7 +3,32 @@
 
 <head>
   <%- include('../partials/head'); %>
-
+  <style>
+    form table {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    form label {
+      margin-bottom: 5px;
+    }
+    form input {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -16,25 +41,43 @@
   <main>
     <div class="jumbotron">
       <h1>Форма добавления пользователя</h1>
+      <p>После заоплнения полей нажмите Сохранить. Пользователь с данными указанными в форме будет добавлен в базу данных</p>
     </div>
   </main>
 
   <h2>Добавить пользователя:</h2>
   <form>
     <table>
-    <label for="name">Имя:</label>
-    <input type="text" name="name" id="name">
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
-    <br>
-    <label for="password">Пароль:</label>
-    <input type="password" name="password" id="password">
-    <br>
-    <label for="role">Роль:</label>
-    <input type="text" name="role" id="role_id">
-    <br>
-    <button type="submit" id="submitButton">Сохранить</button>
+      <tr>
+        <td>
+          <label for="name">Имя:</label>
+          <input type="text" name="name" id="name">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="password">Пароль:</label>
+          <input type="password" name="password" id="password">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="role">Роль:</label>
+          <input type="text" name="role" id="role_id">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" id="submitButton">Сохранить</button>
+        </td>
+      </tr>
+    </table>
   </form>
 
 

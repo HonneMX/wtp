@@ -3,6 +3,32 @@
 
 <head>
   <%- include('../partials/head'); %>
+  <style>
+    form table {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    form label {
+      margin-bottom: 5px;
+    }
+    form input {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -10,23 +36,50 @@
   <header>
     <%- include('../partials/header'); %>
   </header>
-
+  <main>
+    <div class="jumbotron">
+      <h1>Форма изменения пользователя</h1>
+      <p>После заполнения полей нажмите Сохранить.</p>
+    </div>
+  </main>
   <form>
+    <tr>
+      <td>
     <label for="role">User Id:</label>
     <input type="text" name="role" id="user_id">
+  </td>
+</tr>
+<tr>
+  <td>
     <br>
     <label for="name">Имя:</label>
     <input type="text" name="name" id="name">
-    <br>
+  </td>
+</tr>
+<br>
+<tr>
+  <td>   
     <label for="email">Email:</label>
     <input type="email" name="email" id="email">
-    <br>
+  </td>
+</tr>
+<br>
+<tr>
+  <td> 
     <label for="password">Пароль:</label>
     <input type="password" name="password" id="password">
-    <br>
+  </td>
+</tr>
+<br>
+<tr>
+  <td> 
     <label for="role">Роль:</label>
     <input type="text" name="role" id="role_id">
-    <br>
+  </td>
+</tr>
+<br>
+<tr>
+  <td> 
     <button type="submit" id="submitButton">Сохранить</button>
   </form>
 

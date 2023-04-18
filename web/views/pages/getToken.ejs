@@ -3,6 +3,32 @@
 
 <head>
   <%- include('../partials/head'); %>
+  <style>
+    form table {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    form label {
+      margin-bottom: 5px;
+    }
+    form input {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #8400ff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -11,13 +37,30 @@
     <%- include('../partials/header'); %>
   </header>
 
-
+  <main>
+    <div class="jumbotron">
+      <h1>Страница получения токена по почте и паролю пользователя:</h1>
+      <p>необходимо указать почту пользователя и его пароль. После отправки данных если данные пользователя верны - будет возвращен токен.</p>
+    </div>
+  </main>
   <form id="login-form">
+    <tr>
+      <td>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
+  </td>
+</tr>
+<tr>
+  <td>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
-    <button type="submit">Submit</button>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button type="submit">Log in</button>
+  </td>
+</tr>
   </form>
 
     <div id="output"></div>
