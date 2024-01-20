@@ -1,22 +1,19 @@
 # wtp
 EN
 
-The project was created to provide a sandbox for novice testers to get acquainted with the principles of the WEB site API and Database. 
-All these three layers are deployed by two commands 
+✨ Project Description ✨
 
-From the repository root 
+The project is aimed at providing a sandbox environment for novice testers to familiarize themselves with the principles of WEB site API and Database. It encompasses three layers, all of which can be deployed using two commands:
 
 docker-compose build
+docker-compose up
+After executing these commands from the repository root, the web site will be accessible on the local machine's port 3000. The API will be deployed on port 8080, and the database will be accessible on port 5432 of the local machine.
 
-docker compose up
+The API is developed using FastAPI, and you can explore the available methods by accessing the /docs endpoint. To access the list of methods, use the following URL: http://localhost:8080/docs#/.
 
-This will raise the web site on the local machine port 3000
-The API will be deployed to the local machine on port 8080. 
-The database is deployed on the local machine port 5432
+Please make sure you have Docker installed before running the commands.
 
-
-The API is written with FastAPI and you can use the /docs prefix (http://localhost:8080/docs#/) 
-to open a list of methods
+Thank you for using this project! 😊👍
 
 RU
 
